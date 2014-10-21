@@ -7,17 +7,19 @@
 makeCacheMatrix <- function(x = matrix()) {
     ## set inverse, i, to NULL when generating the Matrix object.
     i <- NULL 
-    set <- function(y) {
+    s <- function(y) {
         x <<- y
         ## set inverse, i, to NULL when setting new values to matrix, x.
         i <<- NULL 
     }
-    get <- function() x
-    setInverse <- function(inverse) i <<- inverse
-    getInverse <- function() i
-    list(set = set, get = get,
-         setInverse = setInverse,
-         getInverse = getInverse)
+    g <- function() x
+    si <- function(inverse) i <<- inverse
+    gi <- function() i
+    
+    ## short names are internal, long names are external
+    list(set = s, get = g,
+         setInverse = si,
+         getInverse = gi)
 }
 
 
